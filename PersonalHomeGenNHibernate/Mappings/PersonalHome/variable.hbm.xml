@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping
+    xmlns="urn:nhibernate-mapping-2.2" assembly="PersonalHomeGenNHibernate"
+    namespace="PersonalHomeGenNHibernate.EN.PersonalHome" default-lazy="false">
+  <class name="VariableEN" table="Variable">
+    <id name="IdVariable" column="IdVariableVariable">
+      <generator class="identity"/>
+    </id>
+    <property name="Nombre" column="Nombre"/>
+    <property name="Caracteristicas" column="Caracteristicas"/>
+    <property name="Precio" column="Precio"/>
+    <property name="Imagen" column="Imagen"/>
+    <property name="Iva" column="Iva"/>
+    <property name="Miniatura" column="Miniatura"/>
+    <bag name="Pack" table="Variable_Pack">
+      <key>
+        <column name="FK_idVariable_variable"/>
+      </key>
+      <many-to-many class="PersonalHomeGenNHibernate.EN.PersonalHome.PackEN">
+        <column name="FK_idPack_pack"/>
+      </many-to-many>
+    </bag>
+  </class>
+</hibernate-mapping>

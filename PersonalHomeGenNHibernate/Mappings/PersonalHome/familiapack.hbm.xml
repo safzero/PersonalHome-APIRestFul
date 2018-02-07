@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping
+    xmlns="urn:nhibernate-mapping-2.2" assembly="PersonalHomeGenNHibernate"
+    namespace="PersonalHomeGenNHibernate.EN.PersonalHome" default-lazy="false">
+  <class name="FamiliaPackEN" table="FamiliaPack">
+    <id name="IdFamPack" column="IdFamPackFamiliaPack">
+      <generator class="identity"/>
+    </id>
+    <property name="Nombre" column="Nombre"/>
+    <property name="Codigo" column="Codigo"/>
+    <property name="Color" column="Color"/>
+    <bag name="Pack" table="Pack_FamiliaPack">
+      <key>
+        <column name="FK_idFamPack_familiaPack"/>
+      </key>
+      <many-to-many class="PersonalHomeGenNHibernate.EN.PersonalHome.PackEN">
+        <column name="FK_idPack_pack"/>
+      </many-to-many>
+    </bag>
+    <bag name="TipoEstancia" table="FamiliaPack_TipoEstancia">
+      <key>
+        <column name="FK_idFamPack_familiaPack"/>
+      </key>
+      <many-to-many class="PersonalHomeGenNHibernate.EN.PersonalHome.TipoEstanciaEN">
+        <column name="FK_idTipoEstancia_tipoEstancia"/>
+      </many-to-many>
+    </bag>
+  </class>
+</hibernate-mapping>

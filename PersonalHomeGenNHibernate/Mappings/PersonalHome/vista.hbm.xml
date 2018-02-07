@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping
+    xmlns="urn:nhibernate-mapping-2.2" assembly="PersonalHomeGenNHibernate"
+    namespace="PersonalHomeGenNHibernate.EN.PersonalHome" default-lazy="false">
+  <class name="VistaEN" table="Vista">
+    <id name="IdVista" column="IdVistaVista">
+      <generator class="identity"/>
+    </id>
+    <property name="Nombre" column="Nombre"/>
+    <bag name="Estancia" table="Estancia_Vista">
+      <key>
+        <column name="FK_idVista_vista"/>
+      </key>
+      <many-to-many class="PersonalHomeGenNHibernate.EN.PersonalHome.EstanciaEN">
+        <column name="FK_idEstancia_estancia"/>
+      </many-to-many>
+    </bag>
+    <bag name="Inmueble" table="Vista_Inmueble">
+      <key>
+        <column name="FK_idVista_vista"/>
+      </key>
+      <many-to-many class="PersonalHomeGenNHibernate.EN.PersonalHome.InmuebleEN">
+        <column name="FK_idInmueble_inmueble"/>
+      </many-to-many>
+    </bag>
+  </class>
+</hibernate-mapping>

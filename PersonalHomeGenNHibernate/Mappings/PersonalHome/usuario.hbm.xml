@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping
+    xmlns="urn:nhibernate-mapping-2.2" assembly="PersonalHomeGenNHibernate"
+    namespace="PersonalHomeGenNHibernate.EN.PersonalHome" default-lazy="false">
+  <class name="UsuarioEN" table="Usuario">
+    <id name="IdUsuario" column="IdUsuarioUsuario">
+      <generator class="identity"/>
+    </id>
+    <property name="Nombre" column="Nombre"/>
+    <property name="Email" column="Email"/>
+    <property name="Telefono" column="Telefono"/>
+    <property name="Passwd" column="Passwd"/>
+    <bag name="Proyecto">
+      <key>
+        <column name="FK_idUsuario_usuario"/>
+      </key>
+      <one-to-many class="PersonalHomeGenNHibernate.EN.PersonalHome.ProyectoEN"/>
+    </bag>
+  </class>
+</hibernate-mapping>
